@@ -1,0 +1,12 @@
+{
+  "name": "ratingbot",
+  "version": "1.0.0",
+  "dependencies": {
+    "@puregram/hear": "^2.0.2-rc.1",
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.1",
+    "imdb-api": "^4.4.1",
+    "puregram": "^2.4.2",
+    "yoomoney-sdk": "^1.5.1"
+  }
+}
