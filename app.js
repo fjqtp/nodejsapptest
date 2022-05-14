@@ -1,6 +1,4 @@
-// --> https://core.telegram.org/bots/payments <--
-
-const {Telegram, Keyboard, MessageContext} = require('puregram');
+const {Telegram, Keyboard, MessageContext, WebAppDataContext} = require('puregram');
 
 const {HearManager} = require('@puregram/hear');
 
@@ -9,6 +7,7 @@ require('dotenv').config();
 const axios = require('axios')
 const telegram = Telegram.fromToken(process.env.TELEGRAM_BOT_TOKEN);
 const hearManager = new HearManager();
+const root_url = process.env.NODE_ENV === 'production' ? "https://calm-cliffs-51858.herokuapp.com/menu" : 'https://127.0.0.1:8080'
 
 telegram.updates.on('message', hearManager.middleware);
 
@@ -69,6 +68,14 @@ hearManager.hear(
     }
 )
 
+telegram.updates.on('web_app_data',
+    /** @param context {WebAppDataContext} */
+    async (context) => {
+        console.log(context);
+        return context.send('Вижу что ты прислал ' + context.data)
+    }
+);
+
 telegram.updates.on('pre_checkout_query', async (context) => {
     // Triggered when user pressed "Pay" button and Telegram expecting
     // you to verify all the data and say if everything is OK
@@ -110,7 +117,7 @@ telegram.api.setChatMenuButton({
         type: "web_app",
         text: "test",
         web_app: {
-            url: "https://calm-cliffs-51858.herokuapp.com/"
+            url: root_url + '/menu'
         }
     }
 });

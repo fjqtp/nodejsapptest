@@ -4,7 +4,10 @@
   "dependencies": {
     "@puregram/hear": "^2.0.2-rc.1",
     "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pug": "^3.0.2",
     "puregram": "^2.4.2"
   }
 }
