@@ -6,13 +6,17 @@ const fs = require('fs');
 
 const {Telegram, Keyboard, MessageContext, WebAppDataContext} = require('puregram');
 const telegram = Telegram.fromToken(process.env.TELEGRAM_BOT_TOKEN);
-const key = fs.readFileSync('./cert/selfsigned.key');
-const cert = fs.readFileSync('./cert/selfsigned.crt');
 const bodyParser = require('body-parser');
-const options = {
-    key: key,
-    cert: cert
-};
+const isProduction = process.env.NODE_ENV === 'production';
+let options = {}
+if (!isProduction){
+    const key = fs.readFileSync('./cert/selfsigned.key');
+    const cert = fs.readFileSync('./cert/selfsigned.crt');
+    options = {
+        key: key,
+        cert: cert
+    };
+}
 
 let port = process.env.PORT || 8080
 
