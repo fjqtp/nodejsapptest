@@ -110,7 +110,7 @@ telegram.api.setChatMenuButton({
         type: "web_app",
         text: "test",
         web_app: {
-            url: "https://google.com"
+            url: "https://calm-cliffs-51858.herokuapp.com/"
         }
     }
 });
