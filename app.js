@@ -53,7 +53,7 @@ hearManager.hear(
     (context) => {
         const keyboard = Keyboard.keyboard([
             [
-                Keyboard.textButton('Some button')
+                Keyboard.webAppButton('Менюшка', 'https://calm-cliffs-51858.herokuapp.com/')
             ],
 
             [
