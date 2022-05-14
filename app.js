@@ -6,9 +6,6 @@ const {HearManager} = require('@puregram/hear');
 
 require('dotenv').config();
 
-const imdb = require('imdb-api')
-
-
 const axios = require('axios')
 const telegram = Telegram.fromToken(process.env.TELEGRAM_BOT_TOKEN);
 const hearManager = new HearManager();
@@ -38,7 +35,7 @@ hearManager.hear(/^\/pay/i,
             }
         ],
 
-
+        provider_token: process.env.CLICK_TEST_TOKEN,
 
         start_parameter: 'test',
 
